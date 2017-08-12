@@ -1,0 +1,32 @@
+<!--DOCTYPE html -->
+<html>
+<head>
+	<title> Restaurantku</title>
+</head>
+<body>
+<h1>ALL RESTAURANT NAME</h1>
+
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		<ul>
+		{% for message in messages %}
+			<li><strong>{{ message }}</strong></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	{% endwith %}
+
+<a href="{{url_for('newRestaurant')}}">Create New Restaurant</a>
+
+<ol>
+	{% for i in restaurants %}
+	<li><a href="{{url_for('restaurantMenu', restaurant_id=i.id)}}">{{ i.name }}</a>
+	| <a href="{{url_for('editRestaurant', restaurant_id=i.id)}}"> edit</a>
+	| <a href="{{url_for('deleteRestaurant', restaurant_id=i.id)}}"> delete</a>
+	</li>
+	<br>
+
+	{% endfor %}
+</ol>
+</body>
+</html>

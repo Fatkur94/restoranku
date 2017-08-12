@@ -1,12 +1,21 @@
 <html>
 <body>
-<form action= "{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id=i.id)}}" method = 'POST'>
+<form action= "{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id=i.id)}}" method = 'POST' enctype="multipart/form-data">
 
-<p>Name:</p>
-<input type = 'text' size='30' name = 'name' placeholder = '{{i.name}}'>
+<label>Name
+	<input type = 'text' name = 'name' placeholder = '{{i.name}}'><br><br>
+</label>
 
-<input type='submit' value='Edit'>
+<label> description
+	<textarea name="description">{{i.description}}</textarea><br><br>
+</label>
+
+<label> price
+	<input type = 'text' name = 'price' placeholder = '{{i.price}}'><br><br>	
+</label>
+	<input type='submit' value='Edit'>
 </form>
+
 <a href= "{{url_for('restaurantMenu', restaurant_id= i.restaurant_id)}}">Cancel</a>
 </body>
 </html>
